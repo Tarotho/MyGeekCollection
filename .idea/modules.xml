@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/MGCFront.iml" filepath="$PROJECT_DIR$/MGCFront.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyGeekCollection.iml" filepath="$PROJECT_DIR$/MyGeekCollection.iml" />
     </modules>
   </component>
