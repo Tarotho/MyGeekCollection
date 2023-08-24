@@ -1,1 +1,4 @@
-<p>dashboard works!</p>
+<p *ngIf="!userLoginOn">Usuario NO autenticado</p>
+<p *ngIf="userLoginOn">Bienvenido! te has logeado correctamente</p>
+
+

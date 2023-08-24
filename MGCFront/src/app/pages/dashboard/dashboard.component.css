@@ -1,0 +1,11 @@
+.image-container {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%; /* La imagen ocupará el ancho del contenedor */
+    height: auto; /* Se mantendrá la proporción de la imagen */
+    object-fit: cover; /* La imagen se ajustará y recortará para llenar el contenedor */
+}

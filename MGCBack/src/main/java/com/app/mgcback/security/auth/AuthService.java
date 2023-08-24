@@ -5,12 +5,15 @@ import com.app.mgcback.security.entity.User;
 import com.app.mgcback.security.entity.Role;
 import com.app.mgcback.security.jwt.JwtService;
 import com.app.mgcback.security.repository.UserRepository;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import static java.lang.Character.getName;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +30,7 @@ public class AuthService {
         String token = jwtService.getToken(user);
         return AuthResponse.builder()
                 .token(token)
+                .username(user.getUsername())
                 .build();
 
     }
@@ -44,6 +48,9 @@ public class AuthService {
 
         return AuthResponse.builder()
                 .token(jwtService.getToken(user))
+                .name(user.getName())
+                .username(user.getUsername())
+                .email(user.getEmail())
                 .build();
 
     }

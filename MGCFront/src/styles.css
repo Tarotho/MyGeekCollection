@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+/* Agrega el siguiente import al comienzo del archivo */
+@import "font-awesome/css/font-awesome.css";
+
+.text-generic{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/* No Tocar de aqui para arriba*/
+
+
+
+body {
+  background-color: #1f1f1f;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+}
+
+a {
+  color: #727272;
+  text-decoration: none;
+}
+
+.button {
+  background-color: #FFD700;
+  color: #2c2c2c;
+  border: 1px solid #FFD700;
+  padding: 10px 20px;
+  border-radius: 5px;
+}

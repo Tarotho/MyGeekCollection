@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-footer-navbar',
@@ -8,9 +9,19 @@ import {Component, OnInit} from '@angular/core';
 export class FooterNavbarComponent implements OnInit{
   userLoginOn:boolean=false;
 
-  constructor() {
-  }
-  ngOnInit(): void {
+
+
+  constructor(private auth:AuthService) {
   }
 
+  ngOnInit(): void {
+    this.auth.currentUserLoginOn.subscribe({
+      next:(userLoginOn)=>{this.userLoginOn=userLoginOn}
+    })
+
+  }
+
+  logOut(){
+    this.auth.currentUserLoginOn.next(false)
+  }
 }
