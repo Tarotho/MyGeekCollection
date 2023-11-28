@@ -1,7 +1,6 @@
-export interface User{
+export class User {
   id?:number;
   username:String;
-  name?:String;
   email?:String;
   token:String;
 }

@@ -1,0 +1,23 @@
+/* Estilos generales para la barra de navegación */
+.bottom-navigation {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  height: 90px;
+  position: fixed; /* Mantén la barra en la parte inferior */
+  bottom: 0; /* Ancla la barra en la parte inferior */
+  width: 100%; /* Ancho completo */
+}
+
+/* Estilos para el modo oscuro */
+.dark-mode {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+/* Estilos para hacer el ícono "plus" más grande */
+.bottom-navigation a:nth-child(3) i {
+  font-size: 50px;
+}

@@ -1,0 +1,14 @@
+<h2>¿Quien eres?</h2><h2>Crear nuevo usuario</h2>
+<table class="table table-striped">
+  <thead class="table-dark">
+  <tr>
+    <th>Nombre</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor= "let user of user">
+    <td>{{user.username}}
+      <button (click)="userLogin(user.id)">Seleccionar</button></td>
+  </tr>
+  </tbody>
+</table>
