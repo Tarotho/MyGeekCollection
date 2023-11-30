@@ -1,6 +1,5 @@
 package com.mygeekcollection.backend.config;
 
-import com.mygeekcollection.backend.entity.User;
 import com.mygeekcollection.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

@@ -27,7 +27,8 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authRequest -> {
-                    authRequest.requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll().anyRequest().authenticated();
+                    authRequest.requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll();
+                    authRequest.anyRequest().authenticated();
                 })
                 .sessionManagement(sessionManagement ->
                         sessionManagement

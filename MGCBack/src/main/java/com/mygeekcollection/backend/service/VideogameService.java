@@ -2,16 +2,16 @@ package com.mygeekcollection.backend.service;
 
 import com.mygeekcollection.backend.entity.Videogame;
 import com.mygeekcollection.backend.repository.VideogameRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class VideogameService {
 
-    @Autowired
     VideogameRepository videogameRepository;
 
     public List<Videogame> getUsers() {

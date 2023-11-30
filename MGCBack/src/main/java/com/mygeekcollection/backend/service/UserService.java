@@ -3,31 +3,22 @@ package com.mygeekcollection.backend.service;
 import com.mygeekcollection.backend.entity.Item;
 import com.mygeekcollection.backend.entity.User;
 import com.mygeekcollection.backend.entity.Videogame;
-import com.mygeekcollection.backend.repository.ItemRepository;
 import com.mygeekcollection.backend.repository.UserRepository;
 import com.mygeekcollection.backend.repository.VideogameRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private VideogameRepository videogameRepository;
-
-    @Autowired
-    private PasswordEncoder encrypter;
+    private final UserRepository userRepository;
+    private final VideogameRepository videogameRepository;
+    private final PasswordEncoder encrypter;
 
     public List<User> getUsers() {
         return userRepository.findAll();
@@ -72,18 +63,6 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
         return user.getCollection();
-    }
-
-    public Optional<User> login(String usernameOrEmail, String password) throws UsernameNotFoundException{
-        User user = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + usernameOrEmail));
-        if (encrypter.matches(password, user.getPassword())) {
-            // Contraseña correcta
-            return Optional.of(user);
-        } else {
-            // Contraseña incorrecta
-            throw new UsernameNotFoundException("Credenciales incorrectas para el usuario: " + usernameOrEmail);
-        }
     }
 
 }
