@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/v1/users")
+@RequestMapping("api/v1/user")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "http://localhost:4200/")
 public class UserController {
@@ -27,20 +27,15 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @PostMapping
-    public User save(@RequestBody User user) {
-        userService.saveOrUpdateUser(user);
+    @PutMapping
+    public User update(@RequestBody User user) {
+        userService.Update(user);
         return user;
     }
 
     @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable("id") Integer id) {
         userService.delete(id);
-    }
-
-    @PostMapping("/{id}/vg/{vgId}")
-    public User addItemToUser(@PathVariable ("id") Integer id, @RequestBody Item item,@PathVariable("vgId")Integer vgId) {
-        return userService.addItemToUser(id, item,vgId);
     }
 
     @GetMapping(path = "/{id}/collection")

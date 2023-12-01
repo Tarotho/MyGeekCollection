@@ -1,6 +1,8 @@
 package com.mygeekcollection.backend.controller;
 
 
+import com.mygeekcollection.backend.entity.Item;
+import com.mygeekcollection.backend.entity.User;
 import com.mygeekcollection.backend.entity.Videogame;
 import com.mygeekcollection.backend.service.VideogameService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +20,7 @@ public class VideogameController {
 
     @GetMapping
     public List<Videogame> getAll() {
-        return videogameService.getUsers();
+        return videogameService.getVideogames();
     }
 
     @GetMapping(path = "/{id}")
@@ -34,5 +36,10 @@ public class VideogameController {
     @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable("id") Integer id) {
         videogameService.delete(id);
+    }
+
+    @PostMapping("/{id}")
+    public User addItemToUser(@RequestHeader("Authorization") String token, @RequestBody Item item, @PathVariable("id")Integer id) {
+        return videogameService.addItemToUser(token, item,id);
     }
 }

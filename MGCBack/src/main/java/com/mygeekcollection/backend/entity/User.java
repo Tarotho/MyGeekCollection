@@ -22,7 +22,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users",uniqueConstraints = {@UniqueConstraint(columnNames = {"username","email"})})
+@Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = {"username", "email"})})
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User implements UserDetails {
 
@@ -31,10 +31,12 @@ public class User implements UserDetails {
     private Integer id;
 
     @NotBlank
+    @Column(unique = true)
     private String username;
 
     @Email
     @NotBlank
+    @Column(unique = true)
     private String email;
 
     @NotBlank
