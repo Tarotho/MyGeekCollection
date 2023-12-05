@@ -1,29 +1,35 @@
 <nav class="bottom-navigation dark-mode">
     <a
-            routerLink="/index"
+            routerLink="/dashboard"
             routerLinkActive="active">
         <i class="fa fa-home"></i>
     </a>
     <a
-      routerLink="/user/friends"
-      routerLinkActive="active">
+            routerLink="/user/friends"
+            routerLinkActive="active">
         <i class="fa fa-users"></i>
     </a>
-  <a
-    routerLink="/search"
-    routerLinkActive="active">
-    <i class="fa fa-plus"></i>
-  </a>
-  <a
-    routerLink="/user/collection"
-    routerLinkActive="active">
-    <i class="fa fa-gamepad"></i>
-  </a>
-  <a
-    *ngIf="!userLoginOn"
-    routerLink="/login"
-    routerLinkActive="active">
-    <i class="fa fa-user"></i>
-  </a>
+    <a
+            routerLink="/search"
+            routerLinkActive="active">
+        <i class="fa fa-plus"></i>
+    </a>
+    <a
+            routerLink="/user/collection"
+            routerLinkActive="active">
+        <i class="fa fa-gamepad"></i>
+    </a>
+    <a
+            *ngIf="!userLoginOn"
+            routerLink="/login"
+            routerLinkActive="active">
+        <i class="fa fa-user"></i>
+    </a>
+    <a
+            *ngIf="userLoginOn"
+            routerLink="/profile"
+            routerLinkActive="active">
+        <i class="fa fa-user"></i>
+    </a>
 </nav>
 

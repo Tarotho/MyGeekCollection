@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+
 @RestController
 @RequestMapping("api/v1/user")
 @RequiredArgsConstructor
@@ -39,7 +40,7 @@ public class UserController {
     }
 
     @GetMapping(path = "/{id}/collection")
-    public List<Item> getCollectionByUser(@PathVariable("id")Integer id){
+    public List<Item> getCollectionByUser(@PathVariable("id") Integer id) {
         return userService.getAllItemsForUser(id);
     }
 

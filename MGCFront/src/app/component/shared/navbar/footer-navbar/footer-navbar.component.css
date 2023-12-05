@@ -4,7 +4,7 @@
   justify-content: space-around;
   align-items: center;
   background-color: #333;
-  color: white;
+  color: #ffffff;
   height: 90px;
   position: fixed; /* Mantén la barra en la parte inferior */
   bottom: 0; /* Ancla la barra en la parte inferior */
@@ -20,4 +20,8 @@
 /* Estilos para hacer el ícono "plus" más grande */
 .bottom-navigation a:nth-child(3) i {
   font-size: 50px;
+}
+
+.clicked i {
+  color: #ffffff; /* Cambia esto al color que prefieras */
 }

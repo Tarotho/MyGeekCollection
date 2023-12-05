@@ -1,5 +1,16 @@
-<p>Datos de Usuario</p>
-<p>Usuario: {{userData?.username}}</p>
-<p>Correo electronico: {{userData?.email}}</p>
-
+<p *ngIf="errorMessage.length!=0" class="text-danger">{{errorMessage}}</p>
+<div>
+  <p>Datos de Usuario</p>
+  <p><b>Usuario: {{user?.username}}</b></p>
+  <p><b>Correo electronico: {{user?.email}}</b></p>
+  <p><b>Colección: {{user?.collection}}</b></p>
+  <p><b>Rol: {{user?.role}}</b></p>
+  <button
+          type="button"
+          (click)="logOut()"
+          routerLink="/dashboard"
+          class="btn btn-danger">
+    Cerrar Sesión
+  </button>
+</div>
 

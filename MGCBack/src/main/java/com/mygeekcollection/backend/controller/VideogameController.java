@@ -14,6 +14,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "api/v1/vg")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200/")
 public class VideogameController {
 
     private final VideogameService videogameService;
@@ -29,8 +30,9 @@ public class VideogameController {
     }
 
     @PostMapping
-    public void save(@RequestBody Videogame videogame) {
+    public Videogame save(@RequestBody Videogame videogame) {
         videogameService.saveOrUpdate(videogame);
+        return videogame;
     }
 
     @DeleteMapping(path = "/{id}")

@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {User} from "../../../../services/interfaces/user";
-import {AuthService} from "../../../../services/auth.service";
+import {User} from "../../../../services/user/interfaces/user";
+import {AuthService} from "../../../../services/auth/auth.service";
+import {UserService} from "../../../../services/user/user.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-user-profile',
@@ -8,17 +10,24 @@ import {AuthService} from "../../../../services/auth.service";
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit{
-  userData?:User;
+  errorMessage:String="";
+  user?:User;
 
-
-  constructor(private auth:AuthService) {
+  constructor(private userService:UserService, private auth:AuthService) {
+    this.userService.getUser().subscribe({
+      next: (userData)=> {
+        this.user = userData;
+      }
+    })
   }
 
   ngOnInit(): void {
-    this.auth.currentUserData.subscribe({
-      next: (userData)=>this.userData=userData
-        }
-    )
+
+  }
+
+
+  logOut(): void {
+    this.auth.logOut();
   }
 
 }

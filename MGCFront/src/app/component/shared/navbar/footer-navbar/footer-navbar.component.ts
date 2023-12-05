@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AuthService} from "../../../../services/auth.service";
+import {AuthService} from "../../../../services/auth/auth.service";
 
 @Component({
   selector: 'app-footer-navbar',
@@ -21,7 +21,4 @@ export class FooterNavbarComponent implements OnInit{
 
   }
 
-  logOut(){
-    this.auth.currentUserLoginOn.next(false)
-  }
 }

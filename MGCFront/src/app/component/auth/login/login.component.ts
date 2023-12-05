@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Router} from "@angular/router";
-import {LoginRequest} from "../../../services/interfaces/loginRequest";
-import {AuthService} from "../../../services/auth.service";
+import {LoginRequest} from "../../../services/auth/interfaces/loginRequest";
+import {AuthService} from "../../../services/auth/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -15,15 +15,15 @@ export class LoginComponent {
   userLoginOn:boolean=false;
 
   loginForm = this.formBuilder.group({
-    username: ['Admin', [Validators.required]],
-    password: ['admin', [Validators.required]]
+    usernameOrEmail: ['Tarotho', [Validators.required]],
+    password: ['123456', [Validators.required]]
   })
 
 
   constructor(private formBuilder: FormBuilder, private router:Router, private auth:AuthService) {
   }
 
-  get username() { return this.loginForm.controls.username; }
+  get usernameOrEmail() { return this.loginForm.controls.usernameOrEmail; }
   get password() { return this.loginForm.controls.password; }
 
 
@@ -39,7 +39,7 @@ export class LoginComponent {
           },
         complete: () => {
           console.log("Login completado")
-          this.router.navigateByUrl('index')
+          this.router.navigateByUrl('')
           this.loginForm.reset()
           this.userLoginOn=true
         }

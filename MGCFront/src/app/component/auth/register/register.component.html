@@ -1,44 +1,61 @@
 <form [formGroup]="registerForm">
-  <p class="text-danger">{{registerError}}</p>
+    <p class="text-danger">{{registerError}}</p>
 
-  <div class="mb-3">
-    <label for="username" class="form-label">Usuario</label>
-    <input
-      formControlName="username"
-      type="text"
-      class="form-control"
-      id="username"
-      aria-describedby="emailHelp">
-  </div>
-  <div class="mb-3">
-    <label for="email" class="form-label">Email</label>
-    <input
-      formControlName="email"
-      type="email"
-      class="form-control"
-      id="email">
-  </div>
-  <div class="mb-3">
-    <label for="password" class="form-label">Contraseña</label>
-    <input
-      formControlName="password"
-      type="password"
-      class="form-control"
-      id="password">
-  </div>
-  <div class="mb-3">
-    <label for="password2" class="form-label">Repite la contraseña</label>
-    <input
-      formControlName="password2"
-      type="password"
-      class="form-control"
-      id="password2">
-  </div>
+    <div class="mb-3">
+        <label for="username" class="form-label">Usuario</label>
+        <input
+                formControlName="username"
+                type="text"
+                class="form-control"
+                id="username"
+                aria-describedby="emailHelp">
+    </div>
 
-  <button
-    type="button"
-    (click)="register()"
-    class="btn btn-primary">
-    Regístrate
-  </button>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input
+                formControlName="email"
+                type="email"
+                class="form-control"
+                id="email">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input
+                formControlName="password"
+                type="password"
+                class="form-control"
+                id="password">
+    </div>
+    <div class="mb-3">
+        <label for="password2" class="form-label">Repite la contraseña</label>
+        <input
+                formControlName="password2"
+                type="password"
+                class="form-control"
+                id="password2">
+    </div>
+    <div
+            *ngIf="username.invalid && (username.dirty || username.touched) ||
+           email.invalid && (email.dirty || email.touched) ||
+           password.invalid && (password.dirty || password.touched) ||
+           password2.invalid && (password2.dirty || password2.touched)"
+            class="text-danger">
+        <div class="text-generic" *ngIf="username.errors?.['required'] || email.errors?.['required'] || password.errors?.['required'] || password2.errors?.['required']">
+            Todos los campos son Obligatorios.
+        </div>
+    </div>
+    <div
+            *ngIf="password.value!=password2.value && password2.touched"
+            class="text-danger">
+        <div class="text-generic" *ngIf="password.errors?.['required'] || password2.errors?.['required']">
+            Las contraseñas no coinciden.
+        </div>
+    </div>
+    <button
+            type="button"
+            (click)="register()"
+            class="btn btn-primary">
+        Regístrate
+    </button>
 </form>
