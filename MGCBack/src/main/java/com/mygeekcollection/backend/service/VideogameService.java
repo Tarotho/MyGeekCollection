@@ -37,7 +37,7 @@ public class VideogameService {
     }
 
     public User addItemToUser(String token, Item newItem, Integer vgId) {
-        User user = userRepository.findByUsername(jwtService.getUsernameFromToken(token.substring(7)));
+        User user = userRepository.findById(Integer.valueOf(jwtService.getIdFromToken(token.substring(7)))).orElseThrow();
         Videogame videogame = videogameRepository.findById(vgId)
                 .orElseThrow(() -> new RuntimeException("Videojuego no encontrado"));
 

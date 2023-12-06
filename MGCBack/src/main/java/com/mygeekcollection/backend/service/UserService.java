@@ -2,13 +2,13 @@ package com.mygeekcollection.backend.service;
 
 import com.mygeekcollection.backend.entity.Item;
 import com.mygeekcollection.backend.entity.User;
+import com.mygeekcollection.backend.exceptionhandler.exceptions.UserNotFoundException;
 import com.mygeekcollection.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,13 +21,13 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<User> getUserById(Integer id) {
-        return userRepository.findById(id);
+    public User getUserById(Integer id) {
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("Usuario no encontrado con ID: " + id));
     }
 
-    public void Update (User user){
+    public User Update (User user){
         user.setPassword(encrypter.encode(user.getPassword()));
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 
     public void delete(Integer id){

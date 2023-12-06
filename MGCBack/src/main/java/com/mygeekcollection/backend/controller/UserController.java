@@ -2,12 +2,12 @@ package com.mygeekcollection.backend.controller;
 
 import com.mygeekcollection.backend.entity.Item;
 import com.mygeekcollection.backend.entity.User;
+import com.mygeekcollection.backend.security.jwt.JwtService;
 import com.mygeekcollection.backend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -17,6 +17,7 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
+    private final JwtService jwtService;
 
     @GetMapping
     public List<User> getAll() {
@@ -24,14 +25,18 @@ public class UserController {
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<User> getById(@PathVariable("id") Integer id) {
+    public User getById(@PathVariable("id") Integer id) {
         return userService.getUserById(id);
+    }
+
+    @GetMapping(path = "/profile")
+    public User getProfile(@RequestHeader("Authorization") String token){
+        return userService.getUserById(Integer.valueOf(jwtService.getIdFromToken(token.substring(7))));
     }
 
     @PutMapping
     public User update(@RequestBody User user) {
-        userService.Update(user);
-        return user;
+        return userService.Update(user);
     }
 
     @DeleteMapping(path = "/{id}")
