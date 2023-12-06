@@ -14,7 +14,7 @@ export class UserProfileComponent implements OnInit{
   user?:User;
 
   constructor(private userService:UserService, private auth:AuthService) {
-    this.userService.getUser().subscribe({
+    this.userService.getProfile().subscribe({
       next: (userData)=> {
         this.user = userData;
       }

@@ -14,6 +14,8 @@ import { UserProfileComponent } from './component/pages/user/user-profile/user-p
 import { UsuariosComponent } from './component/usuarios/usuarios.component';
 import {JwtInterceptorInterceptor} from "./services/auth/jwt-interceptor.interceptor";
 import {ErrorInterceptorInterceptor} from "./services/auth/error-interceptor.interceptor";
+import { UserCollectionComponent } from './component/pages/user/user-collection/user-collection.component';
+import { UserListComponent } from './component/pages/user/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {ErrorInterceptorInterceptor} from "./services/auth/error-interceptor.int
     RegisterComponent,
     DashboardComponent,
     UserProfileComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    UserCollectionComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

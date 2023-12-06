@@ -20,7 +20,7 @@ export class UsuariosComponent implements OnInit{
   }
 
 private getUsers(){
-    this.userService.getUserList().subscribe(data =>{this.user=data})
+    this.userService.getAllUsers().subscribe(data =>{this.user=data})
 }
 
   userLogin(userId: number | undefined) {

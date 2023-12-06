@@ -11,12 +11,17 @@ export class UserService {
 
   constructor(private httpClient : HttpClient) { }
 
-  getUserList():Observable<User[]>{
-    return this.httpClient.get<User[]>(`${environment.urlApi}'user`)
+  getAllUsers():Observable<User[]>{
+    return this.httpClient.get<User[]>(`${environment.urlApi}user`)
   }
 
-  getUser():Observable<User>{
-    return this.httpClient.get<User>(`${environment.urlApi}user/2`).pipe(
+  getUserById(id:number):Observable<User>{
+    return this.httpClient.get<User>(`${environment.urlApi}user/${id}`).pipe(
+      catchError(this.handleError)
+    )
+  }
+  getProfile():Observable<User>{
+    return this.httpClient.get<User>(`${environment.urlApi}user/profile`).pipe(
       catchError(this.handleError)
     )
   }
